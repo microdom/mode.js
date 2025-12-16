@@ -1,4 +1,3 @@
-# mode.js
 # Mode JS
 
 **Mode JS** is a ~10kb, jQuery-inspired semantic layer for modern **vanilla JavaScript**.
