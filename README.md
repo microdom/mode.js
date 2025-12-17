@@ -41,7 +41,7 @@ Mode never replaces the DOM — it **compresses how you talk to it**.
 
 ---
 
-## Example
+## Example 1
 
 ```js
 µ.l(document, "DOMContentLoaded", () => {
