@@ -1,68 +1,102 @@
 # Mode JS
 
-**Mode JS** is a ~10kb, jQuery-inspired semantic layer for modern **vanilla JavaScript**.
+**Mode JS** is a tiny interaction engine for the web, as part of Microdom set.
 
-It allows you to express **intent directly against the live DOM** —  
-without wrapping elements, encapsulating events, or abstracting native APIs.
+It does not provide widgets, components, or behaviors.
+It provides a way to reason about **movement**, **intent**, and **structure**.
 
-> Mode JS helps you *describe what you want to do*,  
-> while staying fully inside the platform.
-
----
-
-## Why Mode JS?
-
-Modern JavaScript has powerful native APIs, but expressive DOM code still tends to be verbose or over-abstracted.
-
-Mode JS exists for developers who:
-
-- want **minimal code weight**
-- want **zero DOM encapsulation**
-- want **native events to stay native**
-- want helpers that disappear after execution
-
-Mode JS is not a framework.  
-Mode JS is not reactive.  
-Mode JS does not own state.
-
-Mode JS is **syntax + intent**.
+Mode JS is designed for developers who want to *build* interactions,
+not configure them.
 
 ---
 
-## Core idea: intent-driven DOM manipulation
+## What Mode JS is
 
-Mode JS introduces a semantic way to address and operate on **live DOM elements**.
+- A low-level interaction primitive
+- Pointer & touch aware
+- Minimal by design
+- Framework-agnostic
+- DOM-friendly
 
-- Elements are always real DOM nodes
-- Events are always native
-- Assignments are always direct
-
-Mode never replaces the DOM — it **compresses how you talk to it**.
+Mode JS helps you express *how things move* — not *what they are*.
 
 ---
 
-## Example 1
+## What Mode JS is not
 
-```js
-µ.l(document, "DOMContentLoaded", () => {
+- ❌ A drag-and-drop library
+- ❌ A sortable / resizable toolkit
+- ❌ A UI framework
+- ❌ A state machine
+- ❌ A collection of ready-made behaviors
 
-  µ.ax({ url: "/content", method: "GET" })
-    .then(data => {
+Those things can be **built with Mode JS**, but they do not belong inside it.
 
-      µ("/[data-editable]/", {
-        each: (el, i) => {
+---
 
-          const val = data.response[`block_${i}`]
-          if (!val) return
+## Why Mode JS exists
 
-          el.dataset.editable === "text"
-            ? µ(el, { html: val })
-            : el.dataset.editable === "image"
-              ? µ(el, "img").src = val
-              : null
-        }
-      })
+Most interaction libraries:
+- abstract too early
+- hide intent behind state
+- grow uncontrollably
+- break at the edges (touch, empty states, nested structures)
 
-    })
+Mode JS takes a different approach:
 
-})
+> **Movement first.  
+> Intent is explicit.  
+> Structure matters more than features.**
+
+---
+
+## Why not X?
+
+Modern UI stacks often require tens of kilobytes of code
+to express a simple interaction.
+
+Mode JS asks a different question:
+
+> *How much code do you actually need  
+> to make something feel right?*
+
+A complete multi-list sortable with touch support
+can be built in ~6 KB total.
+
+Read the full comparison in  
+[`docs/why-not-x.md`](docs/why-not-x.md).
+
+---
+
+## Repository structure
+
+If you’re looking for examples, start in **/demos**.  
+If you’re looking for ideas, start in **/docs**.
+
+---
+
+## Demos
+
+- **Sortable (multi-list + touch)**  
+  A complete sortable interaction built with ~6 KB of code.
+  Demonstrates intent gating, empty container handling, and cross-list movement.
+
+Each demo is intentionally **self-contained**.
+They are not plugins — they are *proofs of thought*.
+
+---
+
+## Philosophy
+
+Mode JS is opinionated:
+
+> “If an interaction cannot be expressed simply,
+> the abstraction is probably wrong.”
+
+Read more in [`docs/philosophy.md`](docs/philosophy.md).
+
+---
+
+## License
+
+MIT

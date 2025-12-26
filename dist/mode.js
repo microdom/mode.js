@@ -252,20 +252,6 @@ function µ(el, fns) {
     }
     return isArr(_el) && _el.length === 0 ? _ : _el
 }
-function nodeDOM(tag, attributes, innerText, childs) {
-    var node = document.createElement(tag)
-    var text = ""
-    function val(v) {
-        return typeof v !== 'object' ? v : Object.keys(v).map((e) => `${e}:${v[e]}`).join(';')
-    }
-    for (const key in attributes) node.setAttribute(key, val(attributes[key]))
-    if (innerText) {
-        var newtext = document.createTextNode(innerText)
-        node.appendChild(newtext)
-    }
-    for (const key in childs) node.appendChild(childs[key])
-    return node
-}
 function moveDOM(fns) {
     const _ = null
     let _return
@@ -335,9 +321,7 @@ function moveDOM(fns) {
             height: height + 'px'
         }
 
-        µ(p.el, {
-            css: css
-        })
+        µ(p.el, { css: css })
         p.el.offsetHeight
         µ(p.el, { css: css2 })
         let a = ['padding-top', 'padding-bottom', 'margin-top', 'margin-bottom']
@@ -371,19 +355,20 @@ function moveDOM(fns) {
 
     function last(p) {
         _return = p.length ? p[p.length - 1] : _
+
     }
     function first(p) {
         _return = p.length ? p[0] : _
     }
     if (!!_return) return _return
 }
-//////// HELPERS
+//// HELPERS
 µ.e = ( e , d=null , b = !0 )=> b? new CustomEvent( e, { detail: d, bubbles: b }):new Event(e)
-µ.l = ( n , e , fn) => n.addEventListener(e,(fn))
-µ.d =  ( e, n=null  )=> n ? n.dispatchEvent(e) : null
-µ.t = ( e, o=null) =>  ( e.preventDefault(), e.stopPropagation(), o)? µ(e.target.closest(o)): e.target 
-µ.a = ( b , t=null) => t? t=='array'? Array.from(b) : Object[t](b) : Object.entries(b)  // t= Object types ( keys, values)
-µ.ar =µ.a
+µ.l = ( n , e , fn ) => n.addEventListener(e,(fn))
+µ.d = ( e, n=null )=> n ? n.dispatchEvent(e) : null
+µ.t = ( e, o=null ) =>  ( e.preventDefault(), e.stopPropagation(), o)? µ(e.target.closest(o)): e.target 
+µ.a = ( b , t=null ) => t? t=='array'? Array.from(b) : Object[t](b) : Object.entries(b)  // t= Object types ( keys, values)
+µ.ar = µ.a
 µ.ax = ( options ) =>{
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();

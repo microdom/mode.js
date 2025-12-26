@@ -252,20 +252,6 @@ function µ(el, fns) {
     }
     return isArr(_el) && _el.length === 0 ? _ : _el
 }
-function nodeDOM(tag, attributes, innerText, childs) {
-    var node = document.createElement(tag)
-    var text = ""
-    function val(v) {
-        return typeof v !== 'object' ? v : Object.keys(v).map((e) => `${e}:${v[e]}`).join(';')
-    }
-    for (const key in attributes) node.setAttribute(key, val(attributes[key]))
-    if (innerText) {
-        var newtext = document.createTextNode(innerText)
-        node.appendChild(newtext)
-    }
-    for (const key in childs) node.appendChild(childs[key])
-    return node
-}
 function moveDOM(fns) {
     const _ = null
     let _return
@@ -438,8 +424,6 @@ function moveDOM(fns) {
     xhr.send(payload);
   });
 }
-
-
 if (typeof window !== 'undefined') {
 window._ = null
 window.html = String.raw
