@@ -1,3 +1,4 @@
+
 # Mode JS
 
 **Mode JS** is a tiny interaction engine for the web, as part of Microdom set.
@@ -12,6 +13,7 @@ not configure them.
 
 ## What Mode JS is
 
+![Mode JS ](./assets/logo.png)
 - A low-level interaction primitive
 - Pointer & touch aware
 - Minimal by design
@@ -65,6 +67,15 @@ can be built in ~6 KB total.
 
 Read the full comparison in  
 [`docs/why-not-x.md`](docs/why-not-x.md).
+
+---
+
+### Code weight in perspective
+>Characters © Team Cherry
+
+![Mode JS vs frameworks — code weight comparison](./assets/mode-weight-meme.jpg)
+
+> The little one can rule the town.
 
 ---
 
