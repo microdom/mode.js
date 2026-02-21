@@ -1,7 +1,8 @@
 
 # Mode JS
 
-**Mode JS** is a tiny interaction engine for the web, as part of Microdom set.
+**Mode JS** is a low-level interaction engine for the web.
+It belongs to the **Microdom** ecosystem.
 
 It does not provide widgets, components, or behaviors.
 It provides a way to reason about **movement**, **intent**, and **structure**.
@@ -15,10 +16,11 @@ not configure them.
 
 ![Mode JS ](./assets/logo.png)
 - A low-level interaction primitive
-- Pointer & touch aware
+- Pointer- and touch-aware
 - Minimal by design
 - Framework-agnostic
 - DOM-friendly
+- Data-binding ready
 
 Mode JS helps you express *how things move* — not *what they are*.
 
@@ -26,8 +28,7 @@ Mode JS helps you express *how things move* — not *what they are*.
 
 ## What Mode JS is not
 
-- ❌ A drag-and-drop library
-- ❌ A sortable / resizable toolkit
+- ❌ A WebComponents library
 - ❌ A UI framework
 - ❌ A state machine
 - ❌ A collection of ready-made behaviors
@@ -35,6 +36,25 @@ Mode JS helps you express *how things move* — not *what they are*.
 Those things can be **built with Mode JS**, but they do not belong inside it.
 
 ---
+### Install
+
+```bash
+npm install @microdom/mode
+```
+**Usage**
+```bash
+import µ from "@microdom/mode"
+// or: import { µ } from "@microdom/mode"
+```
+
+**CDN**
+```html
+<script src="https://cdn.jsdelivr.net/gh/microdom/mode.js/dist/mode.min.js"></script>
+<script>
+  µ("body", { /* ... */ })
+</script>
+```
+
 
 ## Why Mode JS exists
 
@@ -62,8 +82,10 @@ Mode JS asks a different question:
 > *How much code do you actually need  
 > to make something feel right?*
 
+```md
 A complete multi-list sortable with touch support
-can be built in ~6 KB total.
+can be built in **~6 KB total**.
+```
 
 Read the full comparison in  
 [`docs/why-not-x.md`](docs/why-not-x.md).

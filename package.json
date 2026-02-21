@@ -1,0 +1,25 @@
+{
+  "name": "@microdom/mode",
+  "version": "1.0.0",
+  "description": "Mode JS is a ~7kb semantic layer for modern vanilla JavaScript.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/mode.js",
+      "default": "./src/mode.js"
+    },
+    "./dist/mode.js": "./dist/mode.js",
+    "./dist/mode.min.js": "./dist/mode.min.js"
+  },
+  "files": ["src", "dist", "README.md", "LICENSE"],
+  "keywords": ["microdom", "dom", "vanilla", "tiny", "jquery-like"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microdom/mode.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/microdom/mode.js/issues"
+  },
+  "homepage": "https://github.com/microdom/mode.js#readme"
+}
