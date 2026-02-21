@@ -8,6 +8,31 @@ function µ(el, fns) {
     const rtrim = new RegExp("^" + whitespace + "+|((?:^|[^\\\\])(?:\\\\.)*)" + whitespace + "+$", "g")
     const tr = (s) => s.replace(/^\s\s*/, '').replace(/\s\s*$/, '').replace(/(\r\n|\n|\r)/gm, "").replace(/>\s+</g, '><')
     const arr =  ( b , n=null) => n? n=='array'? Array.from(b) : Object[n](b) : Object.entries(b) 
+    const __ = {
+        html,
+        text,
+        insert,
+        on,
+        each,
+        proceed,
+        find,
+        css,
+        classes,
+        clss,
+        attr,
+        prev,
+        next,
+        parents,
+        childs,
+        after,
+        children,
+        last,
+        first,
+        siblingsAll,
+        siblings,
+        filter,
+        wrap
+    }
     function el_(s) {
         s.forEach(e => e.setAttribute(`µicro`, "µ"))
         _el = getEl(`/[µicro]/`)
@@ -30,7 +55,7 @@ function µ(el, fns) {
     if (!!fns) {
         for (let [fn, p] of Object.entries(fns)) {
             fn = fn.replace(/_/g, '')
-            _el && typeof eval(fn) === 'function' ? eval(fn)(p) : null
+            _el && typeof __[fn] === 'function' ? __[fn](p) : null
         }
     }
     function getEl(e) {
@@ -65,7 +90,7 @@ function µ(el, fns) {
     function isStr(e) { return typeof e === 'string' || e instanceof String }
     function isColl(e) { return HTMLCollection.prototype.isPrototypeOf(e) }
     function isHtml(e) { return e[0] === "<" && e[e.length - 1] === ">" }
-
+// Helpers
     function html(p) {
         if (!isStr(p)) return false
         isList(_el) || isArr(_el) ? _el.forEach(el => el.innerHTML = p) : _el.innerHTML = p
@@ -82,9 +107,6 @@ function µ(el, fns) {
     function insert(p) {
         if ( isHtml(p)) _el.insertAdjacentHTML("beforeend", p.replace(/\s+/g, ' '))
         else if( isEl(p))   _el.appendChild(p)
-    }
-    function getFlag(s) {
-        //console.log("getFlag > fro procedure! "+s)
     }
     function on(p) {
         const add = (e, fn, el = null) => {
@@ -361,6 +383,7 @@ function moveDOM(fns) {
     function first(p) {
         _return = p.length ? p[0] : _
     }
+ 
     if (!!_return) return _return
 }
 //////// HELPERS
@@ -427,6 +450,6 @@ function moveDOM(fns) {
 if (typeof window !== 'undefined') {
 window._ = null
 window.html = String.raw
-  window.µ = µ
-  window._µ = moveDOM
+window.µ = µ
+window._µ = moveDOM
 }
